@@ -1,0 +1,33 @@
+
+<a href="https://github.com/yunqian4/jekyll_repo/blob/main/assets/445data/Workbook.ipynb">The notebook</a>
+
+<h2>Visualization 1</h2>
+
+
+<div id="vis1"></div>
+
+<a href="https://raw.githubusercontent.com/UIUC-iSchool-DataViz/is445_data/main/building_inventory.csv">The Data</a>
+
+
+<h2>Visualization 2</h2>
+
+
+
+<div id="vis2"></div>
+
+
+<script>
+await import("https://cdn.jsdelivr.net/npm/vega@latest")
+await import("https://cdn.jsdelivr.net/npm/vega-lite@latest")
+await import("https://cdn.jsdelivr.net/npm/vega-embed@latest")
+
+
+schema1 = require('https://raw.githubusercontent.com/yunqian4/jekyll_repo/main/assets/445data/buildings.json');
+var embedded = await vegaEmbed("#vis1", schema1);
+
+
+
+schema1 = require('https://raw.githubusercontent.com/yunqian4/jekyll_repo/main/assets/445data/licenses.json');
+var embedded2 = await vegaEmbed("#vis2", schema2);
+
+</script>
