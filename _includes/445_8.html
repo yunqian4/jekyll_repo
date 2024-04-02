@@ -1,0 +1,69 @@
+<html>
+
+<head>
+
+    <style>
+        .vis.vega-embed {
+          width: 100%;
+          display: flex;
+        }
+    
+        .vis.vega-embed details,
+        .vis.vega-embed details summary {
+          position: relative;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <a href="https://github.com/yunqian4/jekyll_repo/blob/main/assets/445data/Workbook.ipynb">The notebook</a>
+
+    <h2>Visualization 1</h2>
+    
+    
+    <div id="vis1" class="vis"></div>
+    
+    <a href="https://raw.githubusercontent.com/UIUC-iSchool-DataViz/is445_data/main/building_inventory.csv">The Data</a>
+    
+    <p>Write-up: 
+        In this visualization, I am visualizing "the buildings by the year constructed and number of floors."" I am using a scatter plot as there are two variables. Both variables have quantitative encoding types, and I did not use any specific color scheme.        
+        "Since multiple buildings constructed in the same year may have the same number of floors, I aggregate the number of buildings and represent the number with the size of circles on the scatter plot", and this feature is implemented with altair. In python, I have filtered buildings constructed after 1900 because the dataset vary across a very large time span. The visualization is mostly unchanged compared with the last homework, except that I enabled the built-in pan/zoom capabilities.
+    </p>
+    
+    <h2>Visualization 2</h2>
+    
+    
+    <div id="vis2" class="vis" width="100%"></div>
+    
+    <a href="https://raw.githubusercontent.com/UIUC-iSchool-DataViz/is445_data/main/licenses_fall2022.csv">The Data</a>
+
+    <p>
+        Write-up:
+        In this visualization, I am visualizing "the distribution of original issue date of licenses" by license type. "I am using a histogram because it is suitable for visualizing the distribution of one variable." The encoding type of original issue date is temporal, and I did not use any color scheme. "I set the max number of bins to 100 because range of original issue date in the dataset is around 100 years." Compared with the version in last assignment, I further added a license type dropdown selector as an interaction feature, the selector can help users to focus on one specific license type or on all license types.
+
+    </p>
+
+
+
+    <script type="module">
+        (async () => {
+          await import("https://cdn.jsdelivr.net/npm/vega@latest");
+          await import("https://cdn.jsdelivr.net/npm/vega-lite@latest");
+          await import("https://cdn.jsdelivr.net/npm/vega-embed@latest");
+      
+          const response1 = await fetch("https://raw.githubusercontent.com/yunqian4/jekyll_repo/main/assets/445data/buildings.json");
+          const schema1 = await response1.json();
+          await vegaEmbed("#vis1", schema1);
+      
+          const response2 = await fetch("https://raw.githubusercontent.com/yunqian4/jekyll_repo/main/assets/445data/licenses.json");
+          const schema2 = await response2.json();
+          await vegaEmbed("#vis2", schema2);
+        })();
+    </script>
+
+</body>
+
+</html>
+
